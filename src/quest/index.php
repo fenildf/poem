@@ -1,19 +1,37 @@
 <?php
-  $f_loaded = $_GET["first_loaded"];
-  $db = mysqli_connect("localhost","root","9306251239zxt");
+//数据库信息
+  $host = "localhost";
+  $user = "root";
+  $password = "9306251239zxt";
+
+  //连接数据库
+  $db = mysqli_connect($host,$user,$password);
   if(!$db){
-    die("error");
+    deal_error("无法连接数据库");
   }
   mysqli_query($db,"set names 'utf8'");
   mysqli_select_db($db,"mydatabase");
-  if('true'!=$f_loaded){
-    die("error");
-  }else{
-    first_loaded();
+
+//是否首页
+  if(isset($_GET["first_loaded"])){
+    if('true'!=$_GET["first_loaded"]){
+      deal_error("参数错误");
+    }else{
+      first_loaded();
+    }
+  }else if(isset($_GET["ID"])){ //是否获取某篇诗
+    if(is_numeric($_GET["ID"])){
+      get_poem($_GET["ID"]);
+    }else{
+      deal_error("ID错误");
+    }
+  }else if(isset($_GET["name"])){ //是否获取某位诗人的诗
+    get_someone_poems($_GET["name"]);
   }
+  
   mysqli_close($db);
 
-
+//首页加载
 function first_loaded(){
   $poems = random_poem();
   foreach($poems as $key => $val){
@@ -33,37 +51,67 @@ function first_loaded(){
   print_r(json_encode($result));
 }
 
+//随机十篇诗
 function random_poem(){
-  global $db;
-  $query="SELECT * from poetry ORDER BY RAND() LIMIT 0,10";
-  $result = mysqli_query($db,$query);
-  $result_array = mysqli_fetch_all($result,MYSQLI_ASSOC);
-  if($result_array){
-    $result_obj = array2object($result_array);
-    mysqli_free_result($result);
-    return $result_obj;
-  }else{
-    die("error");
-  }
+  $result_array = common_query("SELECT * from poetry ORDER BY RAND() LIMIT 0,10","后台程序错误");
+  $result_obj = array2object($result_array);
+  return $result_obj;
 }
 
+//获取所有作者
 function get_author(){
-  global $db;
-  $query = "SELECT d_author from poetry";
-  $result = mysqli_query($db,$query);
-  $result_array = mysqli_fetch_all($result,MYSQLI_ASSOC);
-  if($result_array){
-    mysqli_free_result($result);
-    foreach($result_array as $key=>$val){
-      $result_array[$key] = $result_array[$key]["d_author"];
-    }
-    return $result_array;
-  }else{
-    die("error");
+  $result_array = common_query("SELECT d_author from poetry","后台程序错误");
+  foreach($result_array as $key=>$val){
+    $result_array[$key] = $result_array[$key]["d_author"];
   }
+  return $result_array;
+}
+
+//获取诗歌
+function get_poem($id){
+  $result_array = common_query("SELECT * FROM poetry WHERE ID = ".$id,"没有此诗");
+  $result_obj = array2object($result_array);
+  $result_str = json_encode($result_obj);
+  // $html_str = file_get_contents("../index.html");
+  // $html_str = str_replace("<vuebody></vuebody>",$result_str,$html_str);
+  // print_r($html_str);
+  print_r($result_str);
+}
+
+//获取某位作者的诗
+function get_someone_poems($name){
+  $result_array = common_query("SELECT * FROM poetry WHERE d_author = '".$name."'","没有此作者的诗");
+  $result_obj = array2object($result_array);
+  print_r(json_encode($result_obj));
+}
+
+//查询数据库
+function common_query($query_statement,$error_msg){
+  global $db;
+  $result = mysqli_query($db,$query_statement);
+  if(!$result || !mysqli_num_rows($result)){
+    deal_error($error_msg);
+  }
+  
+  $result_array = mysqli_fetch_all($result,MYSQL_ASSOC);
+  mysqli_free_result($result);
+  return $result_array;
+}
+
+//查询错误处理
+function deal_error($error_msg){
+  global $db;
+  if($db){
+    mysqli_close($db);
+  }
+  $obj = new StdClass();
+  $obj -> errorMsg = $error_msg;
+  print_r(json_encode($obj));
+  die();
 }
 
 //数组和对象的转换
+//数组转对象
 function array2object($array) {
   if (is_array($array)) {
     $obj = new StdClass();
@@ -74,6 +122,7 @@ function array2object($array) {
   else { $obj = $array; }
   return $obj;
 }
+//对象转数组
 function object2array($object) {
   if (is_object($object)) {
     foreach ($object as $key => $value) {

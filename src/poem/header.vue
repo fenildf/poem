@@ -1,7 +1,9 @@
 <template>
   <header>
     <div class="header">
-      <div class = "logo"><h2>Poem</h2></div>
+      <div class = "logo">
+        <a href = "javascript:void(0);"><h2>Poem</h2></a>
+      </div>
       <div class = "category">
         <a href = "javascript:void(0);"><p>诗词</p></a>
         <a href = "javascript:void(0);"><p>作者</p></a>
@@ -31,14 +33,13 @@ header {
         float: left;
       }
       h2 {
+        color: @color;
         height: 40px;
         line-height: 40px;
       }
       .category {
         margin-left: 100px;
-        a {
-          text-decoration: none;
-        }
+        
         p {
           display: inline-block;
           font-size: 20px;

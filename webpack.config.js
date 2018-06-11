@@ -24,6 +24,10 @@ const config = {
           'css-loader',
           'less-loader'
         ]
+      },
+      {
+        test:/\.(ttf|svg|eot|woff|woff2|png)\w*/,
+        loader:'file-loader'
       }
     ]
   },

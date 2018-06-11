@@ -12,25 +12,11 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 </head>
 <body>
-  <header>
-    <div>
-      <div class = "logo"><h2>Poem</h2></div>
-      <div class = "category">
-        <a href = "javascript:void(0);"><p>诗词</p></a>
-        <a href = "javascript:void(0);"><p>作者</p></a>
-      </div>
-      <div class = "search"><input type="text"><i class = "fa fa-search"></i></div>
-    </div>
-  </header>
-  <div class="body" id="body">
-    <div class="poems">
-      <poem :poems="poems"></poem>
-    </div>
-    <aside>
-      <author :authors="authors"></author>
-    </aside>
+  <div id="app">
+    <vueheader></vueheader>
+    <vuebody></vuebody>
+    <vuefooter></vuefooter>
   </div>
-  <footer><p>(C) 2018</p></footer>
   <!-- <script src="js/main.js"></script> -->
 </body>
 </html>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <a :href = "'./quest/?name='+author" target="_blank" v-for="author in authors"><span>{{author}}</span></a>
+    <a :href = "'./?name='+author" target="_blank" v-for="author in authors"><span>{{author}}</span></a>
   </div>
 </template>
 
@@ -21,12 +21,13 @@ export default {
 @bgc3: antiquewhite;
 @color: white;
 @color2: black;
-@border: lightgray;
+@border: white;
   span {
     display: inline-block;
     background-color: @bgc3;
     padding: 3px;
     margin: 4px;
     color: @color2;
+    border: 1px solid @border;
   }
 </style>

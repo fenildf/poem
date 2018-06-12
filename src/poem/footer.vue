@@ -1,20 +1,16 @@
 <template>
-  <footer><p>(C) 2018</p></footer>
+  <footer><p>Written by Tony</p></footer>
 </template>
 
 <style lang="less">
-@bgc1: #999;
 @bgc2: brown;
-@bgc3: antiquewhite;
 @color: white;
-@border: lightgray;
 footer {
   width: 100%;
-  height: 60px;
+  height: 30px;
   text-align: center;
-  font-size: 20px;
-  font-weight: bold;
-  line-height: 60px;
+  font-size: 12px;
+  line-height: 30px;
   background: @bgc2;
   color: @color;
 }

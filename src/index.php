@@ -1,4 +1,13 @@
 <?php
+//是否首页
+// echo "ddd";
+// echo file_get_contents("./home.html");
+if((is_array($_GET)&&count($_GET)==0)&&(is_array($_POST)&&count($_POST)==0)){
+  echo file_get_contents("./home.html");
+  die();
+}
+
+
 //数据库信息
   $host = "localhost";
   $user = "root";
@@ -19,11 +28,11 @@
     }else{
       first_loaded();
     }
-  }else if(isset($_GET["ID"])){ //是否获取某篇诗
-    if(is_numeric($_GET["ID"])){
-      get_poem($_GET["ID"]);
+  }else if(isset($_GET["id"])){ //是否获取某篇诗
+    if(is_numeric($_GET["id"])){
+      get_poem($_GET["id"]);
     }else{
-      deal_error("ID错误");
+      deal_error("id错误");
     }
   }else if(isset($_GET["name"])){ //是否获取某位诗人的诗
     get_someone_poems($_GET["name"]);
@@ -72,10 +81,12 @@ function get_poem($id){
   $result_array = common_query("SELECT * FROM poetry WHERE ID = ".$id,"没有此诗");
   $result_obj = array2object($result_array);
   $result_str = json_encode($result_obj);
-  // $html_str = file_get_contents("../index.html");
-  // $html_str = str_replace("<vuebody></vuebody>",$result_str,$html_str);
-  // print_r($html_str);
-  print_r($result_str);
+  $html_str = file_get_contents("./article.html");
+  $title = $result_obj -> {0}['d_title'];
+  $html_str = str_replace("<title>Page Title</title>","<title>".$title."</title>",$html_str);
+  $html_str = str_replace("<vuebody></vuebody>","<vuebody style=\"display:none;\" >".$result_str."</vuebody>",$html_str);
+  print_r($html_str);
+  // print_r($result_str);
 }
 
 //获取某位作者的诗

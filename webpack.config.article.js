@@ -6,9 +6,9 @@ const HTMLPlugin = require('html-webpack-plugin');
 const config = {
   mode: "development",
   target:'web',
-  entry: path.resolve(__dirname,'src/index.js'),
+  entry: path.resolve(__dirname,'src/poem/article/article.js'),
   output: {
-    filename: "js/index.js",
+    filename: "js/article.js",
     path: path.resolve(__dirname,'dist')
   },
   module: {
@@ -34,8 +34,8 @@ const config = {
   plugins: [
     new VueLoadPlugin(),
     new HTMLPlugin({
-      template: './src/home.html',
-      filename: './home.html'
+      template: './src/poem/article/article.html',
+      filename: 'article.html'
     })
   ]
 };

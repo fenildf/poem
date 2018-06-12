@@ -28,7 +28,7 @@ export default {
   },
   created(){
     var self = this;
-    axios.get("./quest?first_loaded=true")
+    axios.get("./?first_loaded=true")
     .then(function(response){
       console.log(this);
       self.poems = response.data.poems;

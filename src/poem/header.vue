@@ -2,7 +2,7 @@
   <header>
     <div class="header">
       <div class = "logo">
-        <a href = "javascript:void(0);"><h2>Poem</h2></a>
+        <a href = "./"><h2>Poem</h2></a>
       </div>
       <div class = "category">
         <a href = "javascript:void(0);"><p>诗词</p></a>

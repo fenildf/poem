@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "webpack --config webpack.config.js && cp ./src/index.php ./dist/",
-    "b_article": "webpack --config webpack.config.article.js && cp -r ./src/index.php ./dist/"
+    "b_article": "webpack --config webpack.config.article.js && cp -r ./src/index.php ./dist/",
+    "b_authors": "webpack --config webpack.config.authors.js && cp -r ./src/index.php ./dist/"
   },
   "author": "",
   "license": "ISC",

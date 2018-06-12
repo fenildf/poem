@@ -36,6 +36,13 @@ if((is_array($_GET)&&count($_GET)==0)&&(is_array($_POST)&&count($_POST)==0)){
     }
   }else if(isset($_GET["name"])){ //是否获取某位诗人的诗
     get_someone_poems($_GET["name"]);
+  }else if(isset($_GET["allName"])){
+    $authors = array_unique(get_author());
+    $authors_str = json_encode($authors);
+    $html_str = file_get_contents("./authors.html");
+    $html_str = str_replace("<title>Page Title</title>","<title>作者</title>",$html_str);
+    $html_str = str_replace("<vuebody></vuebody>","<vuebody style=\"display:none;\" :authors=\"authors\">".$authors_str."</vuebody>",$html_str);
+    print_r($html_str);
   }
   
   mysqli_close($db);

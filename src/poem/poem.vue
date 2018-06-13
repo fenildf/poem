@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id = "poems">
     <section v-for="poem in poems">
       <a :href = "'./?id='+poem.ID" target="_blank"><h1>{{poem.d_title}}</h1></a>
       <p>{{poem.d_author}}</p>
@@ -34,6 +34,7 @@ export default {
     background-color: @bgc3;
     h1 {
       color: @color2;
+      display: inline-block;
     }
     .text {
       white-space: pre-wrap;

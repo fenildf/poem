@@ -4,6 +4,7 @@ import vuefooter from "../footer.vue";
 import vuebody from "../author.vue";
 
 import css from "../../assets/styles/main.less";
+import authorscss from "./styles/authors.less";
 
 require("font-awesome/less/font-awesome.less");
 

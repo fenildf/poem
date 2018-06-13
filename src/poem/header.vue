@@ -5,7 +5,7 @@
         <a href = "./"><h2>Poem</h2></a>
       </div>
       <div class = "category">
-        <a href = "javascript:void(0);"><p>诗词</p></a>
+        <a href = "./?name=all"><p>诗词</p></a>
         <a href = "./?allName"><p>作者</p></a>
       </div>
       <div class = "search"><input type="text"><i class = "fa fa-search"></i></div>

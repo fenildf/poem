@@ -36,11 +36,12 @@ if((is_array($_GET)&&count($_GET)==0)&&(is_array($_POST)&&count($_POST)==0)){
     }
   }else if(isset($_GET["name"])){ //是否获取某位诗人的诗
     get_someone_poems($_GET["name"]);
-  }else if(isset($_GET["allName"])){
+  }else if(isset($_GET["allName"])){  //是否获取作者列表
     $authors = array_unique(get_author());
     $authors_str = json_encode($authors);
-    $html_str = file_get_contents("./authors.html");
-    $html_str = str_replace("<title>Page Title</title>","<title>作者</title>",$html_str);
+    $title = '作者';
+    $html_str = file_get_contents('./authors.html');
+    $html_str = str_replace("<title>Page Title</title>","<title>".$title."</title>",$html_str);
     $html_str = str_replace("<vuebody></vuebody>","<vuebody style=\"display:none;\" :authors=\"authors\">".$authors_str."</vuebody>",$html_str);
     print_r($html_str);
   }
@@ -88,19 +89,43 @@ function get_poem($id){
   $result_array = common_query("SELECT * FROM poetry WHERE ID = ".$id,"没有此诗");
   $result_obj = array2object($result_array);
   $result_str = json_encode($result_obj);
-  $html_str = file_get_contents("./article.html");
   $title = $result_obj -> {0}['d_title'];
-  $html_str = str_replace("<title>Page Title</title>","<title>".$title."</title>",$html_str);
-  $html_str = str_replace("<vuebody></vuebody>","<vuebody style=\"display:none;\" >".$result_str."</vuebody>",$html_str);
-  print_r($html_str);
-  // print_r($result_str);
+  replace_template('./article.html',$title,$result_str);
 }
 
 //获取某位作者的诗
 function get_someone_poems($name){
-  $result_array = common_query("SELECT * FROM poetry WHERE d_author = '".$name."'","没有此作者的诗");
+  $query = "SELECT * FROM poetry WHERE d_author = '".$name."'";
+  $step = 20;
+  if('all' === $_GET['name']){
+    $query = "SELECT * FROM poetry";
+  }
+  if(isset($_GET['p'])){
+    $start = ($_GET['p'] - 1) * $step;
+    $query .= " LIMIT ".$start.",".$step;
+  }
+  $result_array = common_query($query,"没有此作者的诗");
   $result_obj = array2object($result_array);
-  print_r(json_encode($result_obj));
+
+  if(!isset($_GET['p'])){
+    $result_obj = new StdClass();
+    $result_obj -> name = $name;
+    $result_obj -> totalPage = ceil(count($result_array)/$step);
+    $result_obj -> poems = array2object(array_slice($result_array,0,$step));
+  }
+
+  if('all' === $_GET['name']){
+    $title = '所有诗歌';
+  }else{
+    $title = $name;
+  }
+  $result_str = json_encode($result_obj);
+  if(!isset($_GET['p'])){
+    replace_template('./poems.html',$title,$result_str);
+  }else{
+    print_r($result_str);
+  }
+  
 }
 
 //查询数据库
@@ -126,6 +151,14 @@ function deal_error($error_msg){
   $obj -> errorMsg = $error_msg;
   print_r(json_encode($obj));
   die();
+}
+
+//替换模板
+function replace_template($path,$title,$content){
+  $html_str = file_get_contents($path);
+  $html_str = str_replace("<title>Page Title</title>","<title>".$title."</title>",$html_str);
+  $html_str = str_replace("<vuebody></vuebody>","<vuebody style=\"display:none;\" >".$content."</vuebody>",$html_str);
+  print_r($html_str);
 }
 
 //数组和对象的转换

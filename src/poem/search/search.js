@@ -1,14 +1,14 @@
 import Vue from "vue/dist/vue.js";
 import vueheader from "../header.vue";
+import vuebody from "./searchbody.vue";
 import vuefooter from "../footer.vue";
-import vuebody from "./poemsbody.vue";
 
 import css from "../../assets/styles/main.less";
 
 require("font-awesome/less/font-awesome.less");
 
 new Vue({
-  el: '#app',
+  el: "#app",
   components: {
     vueheader,
     vuebody,
@@ -19,8 +19,8 @@ new Vue({
   },
   created(){
     let el = document.getElementsByTagName('vuebody')[0];
-    console.log(el);
-    let info = JSON.parse(el.innerText);
+    // console.log(el);
+    let info = JSON.parse(el.innerHTML);
     this.info = info;
   }
 })

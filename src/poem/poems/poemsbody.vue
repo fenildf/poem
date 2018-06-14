@@ -1,5 +1,5 @@
 <template>
-  <div id = "poemsbody">
+  <div>
     <poem :poems="poems"></poem>
     <pages :totalPage="totalPage"  @topage="toPage" :curPage="curPage"></pages>
   </div>
@@ -12,6 +12,12 @@ import poem from "../poem.vue";
 import axios from "axios";
 
 export default {
+  props: {
+    info: {
+      type: Object,
+      required: true
+    }
+  },
   data(){
     return {
       curPage: 1,
@@ -50,28 +56,32 @@ export default {
       let self = this;
       axios.get(url)
       .then(function(response) {
-        console.log(response);
+        // console.log(response);
         self.poems = response.data;
       })
     }
   },
   created(){
-    let el = document.getElementsByTagName('vuebody')[0];
-    let info = JSON.parse(el.innerText);
-    this.totalPage = info.totalPage;
-    this.poems = info.poems;
-    this.name = info.name;
+    // let el = document.getElementsByTagName('vuebody')[0];
+    // let info = JSON.parse(el.innerText);
+    this.totalPage = this.info.totalPage;
+    this.poems = this.info.poems;
+    this.name = this.info.name;
   },
   mounted(){
-    let el = document.getElementById('poemsbody');
-    el.style.display = 'block';
-    el.style.minHeight = document.documentElement.clientHeight - 70 + "px";
+    // console.log(this);
+    if("search-body" === this.$parent.$el.className){
+      // console.log("search");
+      return;
+    }
+    this.$el.style.display = '';
+    this.$el.style.minHeight = document.documentElement.clientHeight - 70 + "px";
   }
 }
 </script>
 
-<style lang = "less">
-#poemsbody {
+<style lang = "less" scoped>
+div {
   width: 900px;
   margin: 0 auto;
   text-align: center;

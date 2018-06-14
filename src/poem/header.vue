@@ -8,10 +8,26 @@
         <a href = "./?name=all"><p>诗词</p></a>
         <a href = "./?allName"><p>作者</p></a>
       </div>
-      <div class = "search"><input type="text"><i class = "fa fa-search"></i></div>
+      <div class = "search"><input type="text" placeholder="作者/诗歌" v-model="keyword" @keyup.enter="search"><i class = "fa fa-search" @click="search"></i></div>
     </div>
   </header>
 </template>
+
+<script>
+export default {
+  data(){
+    return {
+      keyword:''
+    }
+  },
+  methods: {
+    search(){
+      // q_al : 搜索全部，包括作者和诗歌
+      window.location.href="./?name=q_al" + this.keyword;
+    }
+  }
+}
+</script>
 
 <style lang="less">
 @bgc1: #999;

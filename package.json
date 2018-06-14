@@ -8,7 +8,8 @@
     "build": "webpack --config webpack.config.js && cp ./src/index.php ./dist/",
     "b_article": "webpack --config webpack.config.article.js && cp -r ./src/index.php ./dist/",
     "b_authors": "webpack --config webpack.config.authors.js && cp -r ./src/index.php ./dist/",
-    "b_poems": "webpack --config webpack.config.poems.js && cp -r ./src/index.php ./dist/"
+    "b_poems": "webpack --config webpack.config.poems.js && cp -r ./src/index.php ./dist/",
+    "b_search": "webpack --config webpack.config.search.js && cp -r ./src/index.php ./dist/"
   },
   "author": "",
   "license": "ISC",

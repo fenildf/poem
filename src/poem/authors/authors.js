@@ -22,7 +22,7 @@ new Vue({
     let el = document.getElementsByTagName("vuebody")[0];
     let authors = JSON.parse(el.innerText);
     this.authors = authors;
-    console.log(this);
+    // console.log(this);
   },
   mounted(){
     let el = document.getElementById("authors");

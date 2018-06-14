@@ -21,7 +21,7 @@
       let textObj = JSON.parse(text)[0];
       // console.log(text);
       // console.log(textObj);
-      console.log(this);
+      // console.log(this);
       this.title = textObj.d_title;
       this.author = textObj.d_author;
       this.content = textObj.d_poetry;

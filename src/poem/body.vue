@@ -30,9 +30,9 @@ export default {
     var self = this;
     axios.get("./?first_loaded=true")
     .then(function(response){
-      console.log(this);
+      // console.log(this);
       self.poems = response.data.poems;
-      console.log(response.data.poems);
+      // console.log(response.data.poems);
       self.authors = response.data.authors;
     })
     .catch(function(error){

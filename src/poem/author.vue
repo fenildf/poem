@@ -15,7 +15,7 @@ export default {
 }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
 @bgc1: #999;
 @bgc2: brown;
 @bgc3: antiquewhite;

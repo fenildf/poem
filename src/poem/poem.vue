@@ -1,9 +1,9 @@
 <template>
   <div id = "poems">
     <section v-for="poem in poems">
-      <a :href = "'./?id='+poem.ID" target="_blank"><h1>{{poem.d_title}}</h1></a>
+      <a :href = "'./?id='+poem.ID" target="_blank"><h1 v-html="poem.d_title"></h1></a>
       <p>{{poem.d_author}}</p>
-      <p class = "text">{{poem.d_poetry}}</p>
+      <p class = "text" v-html="poem.d_poetry"></p>
     </section>
   </div>
 </template>

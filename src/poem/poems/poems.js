@@ -17,7 +17,7 @@ new Vue({
   data: {
     info: {}
   },
-  created(){
+  created:function(){
     let el = document.getElementsByTagName('vuebody')[0];
     console.log(el);
     let info = JSON.parse(el.innerText);

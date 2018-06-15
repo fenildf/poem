@@ -32,7 +32,7 @@ export default {
     .then(function(response){
       // console.log(this);
       self.poems = response.data.poems;
-      // console.log(response.data.poems);
+      console.log(response.data.poems);
       self.authors = response.data.authors;
     })
     .catch(function(error){

@@ -1,7 +1,10 @@
+import "babel-polyfill";
 import Vue from "vue/dist/vue.js";
 import vueheader from "../header.vue";
 import vuefooter from "../footer.vue";
 import vuebody from "./poemsbody.vue";
+
+// import "../../assets/js/base.js";
 
 import css from "../../assets/styles/main.less";
 
@@ -17,7 +20,7 @@ new Vue({
   data: {
     info: {}
   },
-  created:function(){
+  created(){
     let el = document.getElementsByTagName('vuebody')[0];
     console.log(el);
     let info = JSON.parse(el.innerText);

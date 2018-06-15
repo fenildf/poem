@@ -10,11 +10,17 @@ const config = {
   mode: isDev ? 'development' : 'production',
   target:'web',
   entry: {
-    index: path.resolve(__dirname,'src/index.js'),
-    authors: path.resolve(__dirname,'src/poem/authors/authors.js'),
-    poems: path.resolve(__dirname,'src/poem/poems/poems.js'),
-    search: path.resolve(__dirname,'src/poem/search/search.js'),
-    article: path.resolve(__dirname,'src/poem/article/article.js')
+    // index: ['babel-polyfill',path.resolve(__dirname,'src/index.js')],
+    // authors: ['babel-polyfill',path.resolve(__dirname,'src/poem/authors/authors.js')],
+    // poems: ['babel-polyfill',path.resolve(__dirname,'src/poem/poems/poems.js')],
+    // search: ['babel-polyfill',path.resolve(__dirname,'src/poem/search/search.js')],
+    // article: ['babel-polyfill',path.resolve(__dirname,'src/poem/article/article.js')],
+    'babel-polyfill':'babel-polyfill',
+    index: './src/index.js',
+    authors: './src/poem/authors/authors.js',
+    poems: './src/poem/poems/poems.js',
+    search: './src/poem/search/search.js',
+    article: './src/poem/article/article.js'
     //,
     // lib: ['vue/dist/vue.js','axios',]
   },

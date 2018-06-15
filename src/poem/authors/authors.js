@@ -1,7 +1,10 @@
+import "babel-polyfill";
 import Vue from "vue/dist/vue.js";
 import vueheader from "../header.vue";
 import vuefooter from "../footer.vue";
 import vuebody from "../author.vue";
+
+// import "../../assets/js/base.js";
 
 import css from "../../assets/styles/main.less";
 import authorscss from "./styles/authors.less";

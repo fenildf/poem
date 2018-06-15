@@ -1,6 +1,9 @@
+import "babel-polyfill";
 import Vue from "vue/dist/vue.js";
 import axios from "axios";
 import css from "./assets/styles/main.less";
+
+// import "./assets/js/base.js";
 
 require("font-awesome/less/font-awesome.less");
 

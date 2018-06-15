@@ -18,7 +18,7 @@ export default {
       required: true
     }
   },
-  data(){
+  data:function(){
     return {
       curPage: 1,
       totalPage: 1,

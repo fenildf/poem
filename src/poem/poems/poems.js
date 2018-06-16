@@ -8,7 +8,7 @@ import vuebody from "./poemsbody.vue";
 
 import css from "../../assets/styles/main.less";
 
-require("font-awesome/less/font-awesome.less");
+// require("font-awesome/less/font-awesome.less");
 
 new Vue({
   el: '#app',

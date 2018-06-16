@@ -2,13 +2,13 @@
   <header>
     <div class="header">
       <div class = "logo">
-        <a href = "./"><h2>Poem</h2></a>
+        <a href = "./"><i class = "iconfont icon-shici logo"></i></a>
       </div>
       <div class = "category">
         <a href = "./?name=all"><p>诗词</p></a>
         <a href = "./?allName"><p>作者</p></a>
       </div>
-      <div class = "search"><input type="text" placeholder="作者/诗歌" v-model="keyword" @keyup.enter="search"><i class = "fa fa-search" @click="search"></i></div>
+      <div class = "search"><input type="text" placeholder="作者/诗歌" v-model="keyword" @keyup.enter="search"><i class = "iconfont icon-search" @click="search"></i></div>
     </div>
   </header>
 </template>
@@ -48,10 +48,11 @@ header {
       >div {
         float: left;
       }
-      h2 {
+      .logo {
         color: @color;
         height: 40px;
         line-height: 40px;
+        font-size: 30px;
       }
       .category {
         margin-left: 100px;

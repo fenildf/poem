@@ -52,7 +52,7 @@ export default {
         this.curPage = direction;
       }
       // console.log(direction);
-      let url = './?name=' + this.name + '&p=' + this.curPage;
+      let url = encodeURI(encodeURI('./?name=' + this.name + '&p=' + this.curPage));
       let self = this;
       axios.get(url)
       .then(function(response) {

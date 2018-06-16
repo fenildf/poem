@@ -10,12 +10,7 @@ const config = {
   mode: isDev ? 'development' : 'production',
   target:'web',
   entry: {
-    // index: ['babel-polyfill',path.resolve(__dirname,'src/index.js')],
-    // authors: ['babel-polyfill',path.resolve(__dirname,'src/poem/authors/authors.js')],
-    // poems: ['babel-polyfill',path.resolve(__dirname,'src/poem/poems/poems.js')],
-    // search: ['babel-polyfill',path.resolve(__dirname,'src/poem/search/search.js')],
-    // article: ['babel-polyfill',path.resolve(__dirname,'src/poem/article/article.js')],
-    'babel-polyfill':'babel-polyfill',
+    // 'babel-polyfill':'babel-polyfill',
     index: './src/index.js',
     authors: './src/poem/authors/authors.js',
     poems: './src/poem/poems/poems.js',
@@ -35,6 +30,13 @@ const config = {
         loader:'vue-loader'
       },
       {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          'css-loader'
+        ]
+      },
+      {
         test: /\.less$/,
         use: [
           'style-loader',
@@ -47,7 +49,10 @@ const config = {
       {
         test:/\.(ttf|svg|eot|woff|woff2|png)\w*/,
         use: [{
-          loader:'file-loader'
+          loader:'file-loader',
+          options:{
+            name: 'font/[name].[hash:8].[ext]'
+          }
           // ,
           // options: {
           //   publicPath: '../'

@@ -5,7 +5,7 @@ import css from "./assets/styles/main.less";
 
 // import "./assets/js/base.js";
 
-require("font-awesome/less/font-awesome.less");
+// require("font-awesome/less/font-awesome.less");
 
 import vueheader from "./poem/header.vue";
 import vuefooter from "./poem/footer.vue";

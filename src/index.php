@@ -36,9 +36,9 @@ if((is_array($_GET)&&count($_GET)==0)&&(is_array($_POST)&&count($_POST)==0)){
     }
   }else if(isset($_GET["name"])){ //是否获取某位诗人的诗
     if('q_' === substr($_GET["name"],0,2)){
-      search($_GET["name"]);
+      search(urldecode($_GET["name"]));
     }else{
-      get_someone_poems($_GET["name"]);
+      get_someone_poems(urldecode($_GET["name"]));
     }
   }else if(isset($_GET["allName"])){  //是否获取作者列表
     $authors = array_unique(get_author());

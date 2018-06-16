@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="poemsbody">
     <poem :poems="poems"></poem>
     <pages :totalPage="totalPage"  @topage="toPage" :curPage="curPage"></pages>
   </div>
@@ -81,14 +81,21 @@ export default {
 </script>
 
 <style lang = "less" scoped>
-div {
+.poemsbody {
   width: 900px;
   margin: 0 auto;
   text-align: center;
+  padding: 10px;
   padding-top: 30px;
   box-sizing: border-box;
-  section {
+  /* section {
     margin: 0 0 30px 0;
+  } */
+}
+
+@media screen and (max-width: 900px){
+  .poemsbody {
+    width: 100%;
   }
 }
 </style>

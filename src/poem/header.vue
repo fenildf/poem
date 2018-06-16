@@ -2,7 +2,7 @@
   <header>
     <div class="header">
       <div class = "logo">
-        <a href = "./"><i class = "iconfont icon-shici logo"></i></a>
+        <a href = "./"><i class = "iconfont icon-shici logo-icon"></i></a>
       </div>
       <div class = "category">
         <a href = "./?name=all"><p>诗词</p></a>
@@ -45,10 +45,11 @@ header {
       margin: auto;
       overflow: hidden;
       font-family: 'Times New Roman', Times, serif;
+      position: relative;
       >div {
         float: left;
       }
-      .logo {
+      .logo-icon {
         color: @color;
         height: 40px;
         line-height: 40px;
@@ -66,7 +67,8 @@ header {
         }
       }
       .search {
-        float: right;
+        position: absolute;
+        right: 0;
         line-height: 30px;
         width: 200px;
         margin-top: 5px;
@@ -88,6 +90,54 @@ header {
         }
       }
     }
+}
+
+@media screen and (max-width: 900px){
+  header {
+    .header {
+      width: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 500px){
+  header {
+    .header {
+      .category {
+        margin-left: 50px;
+        p {
+          margin: 0 10px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 412px){
+  header {
+    .header {
+      .category {
+        margin-left: 10px;
+        p {
+          margin: 0 3px;
+          font-size: 18px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 320px){
+  header {
+    .header {
+      .search {
+        width: 160px;
+        input {
+          width: 130px;
+        }
+      }
+    }
+  }
 }
 
 </style>

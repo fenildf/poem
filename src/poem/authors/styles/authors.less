@@ -1,4 +1,17 @@
 #authors {
   width: 900px;
   margin: 0 auto;
+  text-align: center;
+  span {
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
+
+@media screen and (max-width: 900px){
+  #authors {
+    width: 100%;
+  }
 }

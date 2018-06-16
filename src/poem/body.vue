@@ -50,22 +50,39 @@ export default {
 @color: white;
 @border: lightgray;
 .body {
-    width: 900px;
-    margin: auto;
-    box-sizing: border-box;
-    padding: 10px;
-    display: flex;
-    .poems, sidebar {
-      min-height: 50px;
-    }
+  width: 900px;
+  margin: auto;
+  box-sizing: border-box;
+  padding: 10px;
+  display: flex;
+  .poems, sidebar {
+    min-height: 50px;
+  }
+  .poems {
+    flex: 7;
+    margin: 0 30px 0 0;
+  }
+  aside {
+    flex: 3;
+    border: 1px solid @border;
+    height: 100%;
+    
+  }
+}
+
+@media screen and (max-width: 900px){
+  .body {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 500px){
+  .body {
+    text-align: center;
+    display: block;
     .poems {
-      flex: 7;
-    }
-    aside {
-      flex: 3;
-      border: 1px solid @border;
-      height: 100%;
-      
+      margin: 0;
     }
   }
+}
 </style>

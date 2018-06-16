@@ -36,7 +36,7 @@
 
 <style lang = "less" scoped>
 @color: #4f4f4f;
-div {
+#article {
   width: 900px;
   text-align: center;
   margin: auto;
@@ -45,10 +45,17 @@ div {
   line-height: 2em;
   .title {
     color: @color;
+    padding-top: 20px;
   }
   .content {
     white-space: pre-wrap;
     line-height: 30px;
+  }
+}
+
+@media screen and (max-width: 900px){
+  #article {
+    width: 100%;
   }
 }
 </style>

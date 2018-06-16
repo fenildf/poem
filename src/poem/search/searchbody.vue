@@ -63,10 +63,11 @@ export default {
 .search-body {
   width: 900px;
   margin: 0 auto;
+  padding: 10px;
+  box-sizing: border-box;
   .tabs {
     text-align: left;
-    padding-top: 30px;
-    margin-bottom: -60px;
+    padding-top: 20px;
     >.tab-button {
       display: inline-block;
       width: 50px;
@@ -86,6 +87,20 @@ export default {
       }
     }
   }
+  .poemsbody {
+    padding: 0;
+  }
+}
+
+@media screen and (max-width: 900px){
+  .search-body {
+    width: 100%;
+    .tabs {
+      padding-top: 0px;
+    }
+    
+  }
+  
 }
 
 </style>

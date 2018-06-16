@@ -33,7 +33,7 @@ export default {
     padding: 10px;
     box-sizing: border-box;
     border:1px solid @border;
-    margin: 0 30px 30px 0;
+    margin: 0 0 30px 0;
     background-color: @bgc3;
     h1 {
       color: @color2;
@@ -46,4 +46,10 @@ export default {
       overflow: hidden;
     }
   }
+
+@media screen and (max-width: 500px){
+  section {
+    margin: 0 0 15px 0;
+  }
+}
 </style>

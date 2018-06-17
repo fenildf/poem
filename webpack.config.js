@@ -33,6 +33,7 @@ const config = {
         test: /\.css$/,
         use: [
           'style-loader',
+          // miniCSS.loader,
           'css-loader'
         ]
       },
@@ -113,7 +114,7 @@ const config = {
         // ,
         // styles: {
         //   name: 'styles',
-        //   test: /\.less$/,
+        //   test: /\.(less|css)$/,
         //   chunks: 'all',
         //   enforce: true
         // }

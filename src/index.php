@@ -11,7 +11,7 @@ if((is_array($_GET)&&count($_GET)==0)&&(is_array($_POST)&&count($_POST)==0)){
 //数据库信息
   $host = "localhost";
   $user = "root";
-  $password = "9306251239zxt";
+  $password = "";
 
   //连接数据库
   $db = mysqli_connect($host,$user,$password);
